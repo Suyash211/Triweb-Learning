@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+    background-color: #7FCDCD;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+table{
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 20px;
+}
+
+.sub{
+    height: 20px;
+    width: 100px;
+}
