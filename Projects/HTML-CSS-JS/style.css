@@ -45,10 +45,19 @@
     width: 150px;
     margin: 10px 20px;
 }
+
 .inputProject{
     border: 2px solid;
     height: 30px;
     width: 150px;
     margin-left: 30%;
     margin-top: 10px;
+}
+
+.my_user{
+    color: antiquewhite;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    font-size: larger;
 }
