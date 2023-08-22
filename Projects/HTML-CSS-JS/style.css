@@ -1,0 +1,54 @@
+.main_div{
+    background-color: aqua;
+    width: 400px;
+    margin: auto;
+}
+
+.user_div{
+    width: 50%;
+}
+
+.red_div{
+    background-color: red;
+    float: left;
+    height: 150px;
+}
+
+.green_div{
+    background-color: green;
+    display: inline-block;
+    height: 150px;
+}
+
+.blue_div{
+    background-color: blue;
+    float: left;
+    height: 150px;
+}
+
+.yellow_div{
+    background-color: yellow;
+    display: inline-block;
+    height: 150px;
+}
+
+.user_block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.btn_xt{
+    border: 2px solid;
+    height: 30px;
+    width: 150px;
+    margin: 10px 20px;
+}
+.inputProject{
+    border: 2px solid;
+    height: 30px;
+    width: 150px;
+    margin-left: 30%;
+    margin-top: 10px;
+}
