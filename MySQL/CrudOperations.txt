@@ -25,3 +25,33 @@ ALTER TABLE students ADD FOREIGN KEY (class_id) REFERENCES classes(id);
 ALTER TABLE students ADD created_on timestamp DEFAULT CURRENT_TIMESTAMP;
 
 DROP TABLE classes123;
+------------------------------------------------------------------------------------------------------------------
+INSERT INTO teacher(mobile,teacher_name) VALUES('1111','t1');
+
+SELECT *FROM teacher;
+
+UPDATE teacher SET mobile = '2222';
+
+DELETE FROM teacher;
+
+INSERT into students(id,student_name,class_id,mobile) VALUES(1,'Suyash',1,'1111');
+INSERT into students(id,student_name,class_id,mobile) VALUES(2,'Nipun',2,'2222');
+
+------------------------------------------------------------------------------------------------------------------
+SELECT * from students;
+
+SELECT * from students WHERE class_id=1;
+
+SELECT * FROM `students` WHERE class_id = 1 and mobile=1111;
+
+SELECT * FROM `students` WHERE class_id = 1 OR class_id = 2;
+
+SELECT * FROM `students` WHERE class_id IN (2,3);
+
+SELECT student_name FROM `students` WHERE id = 1;
+
+SELECT student_name,mobile FROM `students` WHERE id = 1;
+
+select st.* FROM students st where id = 2;
+
+select st.student_name,cl.class_name FROM students st INNER JOIN classes cl ON st.class_id = cl.id where st.id = 2;
