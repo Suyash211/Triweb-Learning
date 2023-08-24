@@ -1,0 +1,27 @@
+CREATE TABLE `workshop`.`users` (`id` INT(11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(256) NOT NULL , `email` VARCHAR(256) NOT NULL , `password` VARCHAR(256) NOT NULL, PRIMARY KEY(`id`) );
+
+INSERT INTO `users`(`name`, `email`, `password`) VALUES ('[Suyash]','[suyash@gmail.com]','[1234]');
+
+SELECT * FROM `users`
+
+UPDATE `users` SET `password`='abcd' WHERE `email`='suyash@gmail.com';
+
+DELETE FROM `users` WHERE `users`.`email` = '[suyash@gmail.com]';
+
+-----------------------------------------------------------------------------------------------------------------
+CREATE DATABASE mysql_workshop_2023;
+
+use mysql_workshop_2023;
+
+CREATE TABLE students( id int(11) NOT null PRIMARY KEY, student_name varchar(255) NOT NULL, class int(11) DEFAULT 6, mobilr varchar(100) );
+
+------------------------------------------------------------------------------------------------------------------
+CREATE TABLE classes( id int(11) not null AUTO_INCREMENT, class_name varchar(100) NOT null, teacher_id int(11) NOT null, PRIMARY KEY(`id`), FOREIGN KEY(`teacher_id`) REFERENCES teacher(id) );
+
+ALTER TABLE students CHANGE class class_id int(11) NOT null;
+
+ALTER TABLE students ADD FOREIGN KEY (class_id) REFERENCES classes(id);
+
+ALTER TABLE students ADD created_on timestamp DEFAULT CURRENT_TIMESTAMP;
+
+DROP TABLE classes123;
