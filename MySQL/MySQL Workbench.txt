@@ -54,3 +54,52 @@ select *from students where class_id <> 5 order by class_id
 
 select *from students where class_id <> 5 order by class_id desc
 
+----------------------------------------------------------------------------------------
+select *from students where class_id = 5 limit 1
+
+select max(salary) from teachers
+
+select min(salary) from teachers
+
+select count(id) as NumberOfTeachers from teachers 
+
+select avg(salary) as Average_Salary from teachers 
+
+select *from students where student_name like 'A%'
+
+select *from students where student_name like 'A%m'
+
+select *from students where student_name like 'A_ex'
+
+select *from students where class_id in(1,4,5)
+
+select max(salary) from teachers where salary not in (select max(salary) from teachers)
+
+select max(salary) from teachers where salary not in (select max(salary) from teachers) and salary not in(select max(salary) from teachers where salary not in (select max(salary) from teachers)
+
+select *from teachers where salary between 5000 and 10000
+
+----------------------------------------------------------------------------------------
+select * from classes c1 left join teachers tr on c1.teacher_id = tr.id
+
+select c1.class_name, tr.teacher_name as class_teacher from classes c1 left join teachers tr on c1.teacher_id = tr.id
+
+----------------------------------------------------------------------------------------
+select student_name from students union select teacher_name from teachers
+
+select *from students group by class_id
+
+select class_id,count(*) as number_of_students from students group by class_id
+
+select class_id,count(*) as number_of_students from students group by class_id order by number_of_students desc
+
+select class_id,count(*) as number_of_students from students group by class_id having number_of_students > 1
+
+create TABLE teachers_dup(
+id int NOT null,
+teacher_name varchar(255) NOT null,
+mobile varchar(100) NOT null,
+salary int
+)
+
+insert into teachers_dup(id,teacher_name,mobile,salary) select id,teacher_name,mobile,salary from teachers where id = 3
