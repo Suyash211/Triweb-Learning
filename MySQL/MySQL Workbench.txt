@@ -1,0 +1,56 @@
+create database workshop2
+
+use workshop2
+
+create TABLE teachers(
+id int NOT null AUTO_INCREMENT PRIMARY KEY,
+teacher_name varchar(255) NOT null,
+mobile varchar(100) NOT null,
+salary int
+)
+
+create TABLE classes(
+id int NOT null AUTO_INCREMENT,
+class_name varchar(100) NOT null,
+teacher_id int NOT null,
+PRIMARY KEY(id),
+FOREIGN KEY(teacher_id) REFERENCES teachers(id)
+)
+
+create TABLE students(
+id int NOT null AUTO_INCREMENT,
+student_name varchar(100) NOT null,
+mobile varchar(20) default 0,
+class_id int NOT null,
+PRIMARY KEY(id),
+FOREIGN KEY(class_id) REFERENCES classes(id)
+)
+
+----------------------------------------------------------------------------------------
+insert into teachers(teacher_name,mobile,salary) values('Vikas','1234',5000)
+
+insert into teachers(teacher_name,mobile,salary) values('Prakash','1235',4000),('Abhay','1236',5000)
+
+insert into teachers values(4,"Ajay","1237",7000)
+
+insert into classes(class_name,teacher_id) values('class 6',1)
+
+insert into classes(class_name,teacher_id) values('class 7',1),('class 8',2),('class 9',3),('class 10',4)
+
+insert into students(student_name,mobile,class_id) values('Alex','9876',4),('Adam','9875',4),('Adi','8888',5),('Vani','8876',5),('Joona','5454',2),('Peter','3434',2),('Ken','1234',1),('Arya','9877',1),('Tarik','4545',3),('Keith','1111',3)
+
+----------------------------------------------------------------------------------------
+update students set mobile='2233' where id = 8
+
+select *from students where class_id = 5
+
+select *from students where class_id = 5 or class_id = 4
+
+select *from students where mobile = '2222' and class_id = 4
+
+select *from students where class_id <> 5
+
+select *from students where class_id <> 5 order by class_id
+
+select *from students where class_id <> 5 order by class_id desc
+
