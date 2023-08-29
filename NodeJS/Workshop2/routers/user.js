@@ -4,10 +4,10 @@ const router = express.Router();
 
 router.post('/register',userController.register);
 
-router.post('/get',userController.register);
+router.post('/get',userController.get);
 
-router.post('/update',userController.register);
+router.post('/update',userController.update);
 
-router.post('/delete',userController.register);
+router.post('/delete',userController.delete);
 
 module.exports = router;
