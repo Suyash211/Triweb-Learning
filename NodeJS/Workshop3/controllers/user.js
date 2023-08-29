@@ -1,43 +1,45 @@
 const userModel = require('../models/user');
 
 module.exports.register = async(req,res) => {
-    console.log(req.body);
-    let result = await userModel.create(req.body);
-
-    if(result.dataValues.id > 0){
+    try{
+        let result = await userModel.create(req.body);
         res.send({status:"success", data:{id:result.dataValues.id}});
-    }
-    else{
+    } 
+    catch(error){
         res.send({status:"error", message : "User registration failed"});
     }
 }
 
 module.exports.get = async(req,res) => {
-    let data = await userModel.get(req.body);
-    if(data){
+    try{
+        let data = await userModel.findByPk(req.body.id);
         res.send({status:"success", data:data});
-    }
-    else{
+    } 
+    catch(error){
         res.send({status:"error", message : "User not found"});
     }
+    
 }
 
 module.exports.update = async(req,res) => {
-    let status = await userModel.update(req.body);
-    if(status){
+    try{
+        let user = await userModel.findByPk(req.body.id);
+        user.password = req.body.password;
+        await user.save();
         res.send({status:"success", message:"User data updated"});
     }
-    else{
+    catch(error){
         res.send({status:"error", message : "User not updated"});
     }
 }
 
 module.exports.delete = async(req,res) => {
-    let status = await userModel.delete(req.body);
-    if(status){
+    try {
+        let user = await userModel.findByPk(req.body.id);
+        await user.destroy();
         res.send({status:"success", message: "User deleted"});
-    }
-    else{
+    } 
+    catch(error) {
         res.send({status:"error", message : "User not deleted"});
     }
 }
