@@ -1,0 +1,17 @@
+mongodb+srv://Suyash:<password>@mycluster.wbyrhrk.mongodb.net/
+
+db.myCollection.insert({name : "Suyash",mobile : 1234})
+
+db.myCollection.insertOne({name : "Nipun",mobile : 5678})
+
+db.myCollection.insertMany([{name : "Aryan",mobile : 1357},{name : "Shashank",mobile : 2468}])
+
+db.myCollection.find()
+
+db.myCollection.find({name : "Suyash"})
+
+db.myCollection.updateOne({name : "Suyash"},{$set :{mobile : 9873}})
+
+db.myCollection.deleteOne({name : "Suyash"})
+
+db.myCollection.deleteMany({})
