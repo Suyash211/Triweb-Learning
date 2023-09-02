@@ -1,0 +1,35 @@
+db.createCollection('products', {validator : {
+    $jsonSchema : { 
+        bsonType : 'object',
+        required : ['title', 'pname', 'owner', 'comments'],
+        properties : {
+            title : {
+                bsonType : 'string',
+                description : 'Title must be string'
+            },
+            pname : {
+                bsonType : 'string',
+                description : 'pname must be string'
+            },
+            owner : {
+                bsonType : 'objectId',
+                description : 'id of customer'
+            },
+            comments : {
+                bsonType : 'string',
+                description : 'Comments must be string'
+            }
+        }
+    }
+}
+})
+
+db.products.insertOne({title : "myProduct" ,pname : "product007" , owner : ObjectId("64f2eedc8cbce807ea3fbc51") , comments : "hello"})
+
+db.products.insertMany([{title : "myProduct1" ,pname : "product014" , owner : ObjectId("64f2eedc8cbce807ea3fbc51") , comments : "hello"}, {title : "myProduct2" ,pname : "product021" , owner : ObjectId("64f2eedc8cbce807ea3fbc51") , comments : "hello"}, {title : "myProduct3" ,pname : "product028" , owner : ObjectId("64f2eedc8cbce807ea3fbc51") , comments : "hello"}])
+
+db.products.insertMany([{title : "myProduct4" ,pname : "product035" , owner : ObjectId("64f2eedc8cbce807ea3fbc51") , comments : "hello"}, {title : "myProduct5" , owner : ObjectId("64f2eedc8cbce807ea3fbc51") , comments : "hello"}, {title : "myProduct6" ,pname : "product049" , owner : ObjectId("64f2eedc8cbce807ea3fbc51") , comments : "hello"}],{ordered : false})
+
+db.books.find({price:{$in : [500,600]}})
+
+db.books.find({price:{$nin : [500,600]}})
