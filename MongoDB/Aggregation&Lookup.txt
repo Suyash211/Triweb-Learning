@@ -1,0 +1,11 @@
+db.customer.insertOne({cname : "Suyash"})
+
+db.books.insertMany([{bname : "Inferno", price : 500},{bname : "Harry Potter", price : 400},{bname : "Atlas" , price : 600}])
+
+db.customer.find({_id : ObjectId("64f2eedc8cbce807ea3fbc51")})
+
+db.customer.updateOne({_id : ObjectId("64f2eedc8cbce807ea3fbc51")},{$set :{favBooks :[ObjectId("64f2efd28cbce807ea3fbc52"),ObjectId("64f2efd28cbce807ea3fbc53"),ObjectId("64f2efd28cbce807ea3fbc54")]}})
+
+db.customer.insertOne({cname : "Nipun", favBooks : [ObjectId("64f2efd28cbce807ea3fbc53")]})
+
+db.customer.aggregate([{$lookup : {from : "books" , localField : "favBooks", foreignField : "_id", as : "FavouriteBooks"}}])
