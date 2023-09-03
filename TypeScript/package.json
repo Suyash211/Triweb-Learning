@@ -1,0 +1,22 @@
+{
+  "name": "@node/user_service123",
+  "version": "1.0.0",
+  "description": "This project contains NodeJS REST APIs",
+  "main": "app.js",
+  "author": "Suyash",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.5.9",
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "start:dev": "nodemon ./dist/app.js",
+    "build" : "tsc"
+  }
+}
