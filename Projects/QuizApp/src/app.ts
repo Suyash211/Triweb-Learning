@@ -5,7 +5,7 @@ import userRoute from './routes/user';
 
 const app = express();
 
-const connectionString = 'mongodb+srv://Suyash:qwerty123@mycluster.ak2c5pq.mongodb.net/workshopdb?retryWrites=true&w=majority';
+const connectionString = '';
 
 app.use(express.json());
 
