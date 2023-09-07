@@ -14,9 +14,11 @@
   "scripts": {
     "build": "tsc --noEmitOnError",
     "start": "node ./dist/app.js",
-    "start:ts" : "ts-node ./src/app.ts"
+    "start:ts": "ts-node ./src/app.ts",
+    "start:dev": "nodemon"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "ts-node": "^10.9.1"
   }
 }
