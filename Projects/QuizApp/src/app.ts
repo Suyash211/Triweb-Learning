@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import userRoute from './routes/user';
+import authRoute from './routes/auth';
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.get('/',(req,res) => {
 });
 
 app.use('/user',userRoute);
+
+app.use('/auth',authRoute);
 
 async function connectDb(){
     try {
