@@ -9,8 +9,15 @@ interface returnResponse{
 
 const getUser = async (req : Request, res : Response) => {
     let resp : returnResponse;
+    console.log(req.userId);
     try{
         const userId = req.params.userId;
+
+        if(req.userId != req.params.userId){
+            const err = new Error("User not authorised");
+            throw err;
+        }
+
         const user = await User.findById(userId,{name : 1,email : 1});
         if(!user){
             resp = {status : "Error", message : "Something went wrong",data : {}};
@@ -31,6 +38,11 @@ const getUser = async (req : Request, res : Response) => {
 const updateUser = async (req : Request, res : Response) => {
     let resp : returnResponse;
     try {
+        if(req.userId != req.body._id){
+            const err = new Error("User not authorised");
+            throw err;
+        }
+
         const userId = req.body._id;
         const user = await User.findById(userId);
 
