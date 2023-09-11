@@ -2,11 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import User from '../models/user';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import ProjectError from '../../helper/error';
 
 interface returnResponse{
     status : "Success" | "Error";
     message : String,
-    data : {}
+    data : {} | []
 }
 
 const registerUser = async (req : Request,res : Response,next : NextFunction) => {
@@ -28,8 +29,7 @@ const registerUser = async (req : Request,res : Response,next : NextFunction) =>
         }
     }
     catch(error){
-        resp = {status : "Error", message : "Something went wrong", data : {}};
-        res.send(resp);
+        next(error);
     }
 }
 
@@ -41,8 +41,9 @@ const loginUser = async (req : Request, res : Response, next : NextFunction) => 
 
         const user = await User.findOne({email});
         if(!user){
-            resp = {status : "Error", message : "User not found", data : {}};
-            res.status(401).send();
+            const err = new ProjectError("User not found");
+            err.statuscode = 401;
+            throw err;
         }
         else{
             const status = await bcrypt.compare(password,user.password);
@@ -52,16 +53,14 @@ const loginUser = async (req : Request, res : Response, next : NextFunction) => 
                 res.status(200).send(resp);
             }
             else{
-                resp = {status : "Error", message : "Credentials do not match", data : {}};
-                res.send(resp);
-                res.status(401).send();
+                const err = new ProjectError("Credentials do not match");
+                err.statuscode = 401;
+                throw err;
             }
         }
     } 
     catch(error){
-        console.log(error);
-        resp = {status : "Error", message : "Something went wrong", data : {}};
-        res.send(resp);
+        next(error);
     }
 }
 

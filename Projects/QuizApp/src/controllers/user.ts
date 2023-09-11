@@ -1,45 +1,47 @@
 import { NextFunction, Request, Response } from 'express';
 import User from '../models/user';
+import ProjectError from '../../helper/error';
 
 interface returnResponse{
     status : "Success" | "Error";
     message : String,
-    data : {}
+    data : {} | []
 }
 
-const getUser = async (req : Request, res : Response) => {
+const getUser = async (req : Request, res : Response, next : NextFunction) => {
     let resp : returnResponse;
     console.log(req.userId);
     try{
         const userId = req.params.userId;
 
         if(req.userId != req.params.userId){
-            const err = new Error("User not authorised");
+            const err = new ProjectError("User not authorised");
+            err.statuscode = 401;
             throw err;
         }
 
         const user = await User.findById(userId,{name : 1,email : 1});
         if(!user){
-            resp = {status : "Error", message : "Something went wrong",data : {}};
-            res.send(resp);
+            const err = new ProjectError("User does not exist");
+            err.statuscode = 401;
+            throw err;
         }
         else{
             resp =  {status : "Success", message : "User Found",data : user};
-            res.send(resp);
+            res.status(200).send(resp);
         }
     } 
     catch(error) {
-        console.log(error);
-        resp = {status : "Error", message : "Something went wrong",data : {}};
-        res.status(500).send(resp);
+        next(error);
     }
 }
 
-const updateUser = async (req : Request, res : Response) => {
+const updateUser = async (req : Request, res : Response, next : NextFunction) => {
     let resp : returnResponse;
     try {
         if(req.userId != req.body._id){
-            const err = new Error("User not authorised");
+            const err = new ProjectError("User not authorised");
+            err.statuscode = 401;
             throw err;
         }
 
@@ -47,8 +49,9 @@ const updateUser = async (req : Request, res : Response) => {
         const user = await User.findById(userId);
 
         if(!user){
-            resp = {status : "Error", message : "Something went wrong",data : {}};
-            res.send(resp);
+            const err = new ProjectError("User does not exist");
+            err.statuscode = 401;
+            throw err;
         }
         else{
             user.name = req.body.name;
@@ -58,9 +61,7 @@ const updateUser = async (req : Request, res : Response) => {
         }
     } 
     catch(error) {
-        console.log(error);
-        resp = {status : "Error", message : "Something went wrong",data : {}};
-        res.status(500).send(resp);
+        next(error);
     }
 }
 

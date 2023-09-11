@@ -1,33 +1,42 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from 'jsonwebtoken';
+import ProjectError from "../../helper/error";
 
 const isAuthenticated = (req : Request, res : Response, next : NextFunction) => {
 
-    const authHeader = req.get('Authorization');
-    if(!authHeader){
-        const err = new Error("Not authenticated");
-        throw err;
-    }
-
-    const token = authHeader.split(' ')[1];
-
-    let decodedToken:{userId : String,iat : Number,exp : Number};
     try{
-        decodedToken = <any>jwt.verify(token,"secretkey");
+        const authHeader = req.get('Authorization');
+        if(!authHeader){
+            const err = new ProjectError("Not authenticated");
+            err.statuscode = 401;
+            throw err;
+        }
+
+        const token = authHeader.split(' ')[1];
+
+        let decodedToken:{userId : String,iat : Number,exp : Number};
+        try{
+            decodedToken = <any>jwt.verify(token,"secretkey");
+        }
+        catch(error){
+            const err = new ProjectError("Not authenticated");
+            err.statuscode = 401;
+            throw err;
+        }
+
+        if(!decodedToken){
+            const err = new ProjectError("Not authenticated");
+            err.statuscode = 401;
+            throw err;
+        }
+
+        req.userId = decodedToken.userId;
+        
+        next();
     }
     catch(error){
-        const err = new Error("Not authenticated");
-        throw err;
+        next(error);
     }
-
-    if(!decodedToken){
-        const err = new Error("Not authenticated");
-        throw err;
-    }
-
-    req.userId = decodedToken.userId;
-    
-    next();
 }
 
 export {isAuthenticated};
