@@ -41,7 +41,7 @@ const submitExam = async (req : Request, res : Response, next : NextFunction) =>
         const quiz = await Quiz.findById(quizId,{answers : 1});
         if(!quiz){
             const err = new ProjectError("Quiz not found");
-            err.statuscode = 401;
+            err.statuscode = 404;
             throw err;
         }
 

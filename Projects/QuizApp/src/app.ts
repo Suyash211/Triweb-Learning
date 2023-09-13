@@ -6,6 +6,7 @@ import userRoute from './routes/user';
 import authRoute from './routes/auth';
 import quizRoute from './routes/quiz';
 import examRoute from './routes/exam';
+import reportRoute from './routes/report';
 import ProjectError from '../helper/error';
 
 const app = express();
@@ -39,6 +40,8 @@ app.use('/auth',authRoute);
 app.use('/quiz',quizRoute);
 
 app.use('/exam',examRoute);
+
+app.use('/report',reportRoute);
 
 app.use((err : ProjectError, req : Request, res : Response, next : NextFunction) => {
     let message : string;
