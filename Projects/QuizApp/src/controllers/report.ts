@@ -1,12 +1,7 @@
 import Report from "../models/report";
 import { Request, Response, NextFunction } from "express";
 import ProjectError from "../../helper/error";
-
-interface returnResponse{
-    status : "Success" | "Error";
-    message : String,
-    data : {} | []
-}
+import {returnResponse} from "../util/interfaces";
 
 const getReport = async (req : Request,res : Response, next : NextFunction) => {
     try{

@@ -1,12 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import User from '../models/user';
 import ProjectError from '../../helper/error';
-
-interface returnResponse{
-    status : "Success" | "Error";
-    message : String,
-    data : {} | []
-}
+import {returnResponse} from "../util/interfaces";
 
 const getUser = async (req : Request, res : Response, next : NextFunction) => {
     let resp : returnResponse;

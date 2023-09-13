@@ -5,12 +5,7 @@ import { validationResult } from 'express-validator';
 
 import User from '../models/user';
 import ProjectError from '../../helper/error';
-
-interface returnResponse{
-    status : "Success" | "Error";
-    message : String,
-    data : {} | []
-}
+import {returnResponse} from "../util/interfaces";
 
 const registerUser = async (req : Request,res : Response,next : NextFunction) => {
     let resp : returnResponse;
