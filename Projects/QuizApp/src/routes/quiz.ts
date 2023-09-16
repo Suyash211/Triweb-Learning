@@ -28,7 +28,7 @@ router.post('/', isAuthenticated, [
         })
 ],createQuiz);
 
-router.get('/:quizId', isAuthenticated, getQuiz);
+router.get('/:quizId?', isAuthenticated, getQuiz);
 
 router.put('/', isAuthenticated, [
     body('name')
