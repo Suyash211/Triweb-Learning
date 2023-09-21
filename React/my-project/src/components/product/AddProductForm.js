@@ -2,7 +2,7 @@ import {React,useRef} from 'react'
 import CustomWrapper from '../layouts/CustomWrapper'
 import Styles from './AddProductForm.module.css'
 
-const AddProductForm = () => {
+const AddProductForm = (props) => {
     const product_name_ref = useRef();
     const image_ref = useRef();
     const price_ref = useRef();
@@ -20,7 +20,7 @@ const AddProductForm = () => {
             price,
             description
         }
-        console.log(product);
+        props.addProductHandler(product);
     }
   return (
     <CustomWrapper>
