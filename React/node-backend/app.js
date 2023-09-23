@@ -24,7 +24,7 @@ app.post('/product',async (req,res) => {
 
 app.get('/product',async (req,res) => {
     try {
-        const products = await Product.find(req.body);
+        const products = await Product.find({});
         res.send({status : 'success',data : products});
     } 
     catch(error) {

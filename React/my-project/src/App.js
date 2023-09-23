@@ -5,6 +5,7 @@ import Product from "./pages/Product";
 import Layout from "./components/layouts/Layout";
 import {Routes,Route} from 'react-router-dom';
 import AddProduct from "./pages/AddProduct";
+import FavouriteItems from "./pages/FavouriteItems";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/contact' element={<Contact />}></Route>
         <Route path='/product' element={<Product />}></Route>
         <Route path='/product/add' element={<AddProduct />}></Route>
+        <Route path='/product/favourite' element={<FavouriteItems />}></Route>
       </Routes>
     </Layout>
   );
