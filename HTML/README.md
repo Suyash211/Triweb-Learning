@@ -11,7 +11,7 @@ Form.html serves as a straightforward registration form showcasing fundamental H
 
 ## Resources
 
-- [MDN Web Docs - HTML)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [MDN Web Docs - HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
 - [W3Schools HTML](https://www.w3schools.com/html/)
 

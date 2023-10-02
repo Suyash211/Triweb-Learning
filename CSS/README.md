@@ -18,7 +18,7 @@ Provides a style sheet for the TimeTable which was made in html.It shows how css
 
 ## Resources
 
-- [MDN Web Docs - CSS)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [MDN Web Docs - CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 - [W3Schools CSS](https://www.w3schools.com/css/)
 
