@@ -2,9 +2,9 @@
 
 Welcome to the QuizApp Backend! This backend server is designed to support the QuizApp frontend, providing the necessary APIs and services to manage and deliver quizzes to users.
 
-## Tech
+## Technologies Used
 
-The QuizApp Backend uses the following teachnologies :
+The QuizApp Backend uses the following technologies :
 
 - [TypeScript](https://www.typescriptlang.org/docs/)
 - [Express](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
