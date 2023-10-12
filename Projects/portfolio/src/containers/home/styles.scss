@@ -4,11 +4,10 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    flex-direction: column;
 
     &__text-wrapper{
         display: flex;
-        align-content: center;
-        flex-direction: column;
         justify-content: center;
 
         h1{
@@ -22,6 +21,29 @@
             white-space: nowrap;
             animation: typingEffectAnimation 2.5s steps(20, end)
         }
+
+    }
+
+    &__contact-me{
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+  
+      button{
+        cursor: pointer;
+        padding: 10px 70px;
+        font-size: 2rem;
+        background: transparent;
+        color: var(--yellow-theme-main-color);
+        border: 1.5px solid var(--yellow-theme-main-color);
+        border-radius: 4px;
+        font-weight: 500;
+  
+        &:hover{
+          background: var(--yellow-theme-main-color);
+          color: #000000;
+        }
+      }
     }
 
 }
