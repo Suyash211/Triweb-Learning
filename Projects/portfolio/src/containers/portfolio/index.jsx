@@ -10,7 +10,7 @@ const portfolioData = [
       id: 1,
       name: "QuizApp  Backend",
       image: ImageOne,
-      link: "https://github.com/Suyash211/Triweb-Learning/tree/main/Projects/portfolio",
+      link: "https://github.com/Suyash211/Triweb-Learning/tree/main/Projects/QuizApp",
     },
     {
       id: 1,
